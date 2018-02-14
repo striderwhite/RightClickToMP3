@@ -12,7 +12,7 @@
 @cd /d "%~dp0"
 
 ::change this if you wish to install elsewhere
-set installPath=%programfiles%\RightClickToMp3\
+set installPath=%appdata%\RightClickToMp3\
 
 ::xcopy LAME.exe and supporting files into new directory %programfiles%/RightClickToMp3/
 ::flags: ignore errors, verify files, supress confirms
@@ -26,7 +26,7 @@ xcopy "%cd%\mp3ico.ico" "%installPath%" /c /v /y /q
 reg add "HKCR\*\shell\RightClickToMp3" /ve /d "Convert to MP3"
 reg add "HKCR\*\shell\RightClickToMp3" /v Icon /t REG_EXPAND_SZ /d "%installPath%mp3ico.ico"
 ::reg add "HKCR\.WAV\shell\RightClickToMp3\command" 
-reg add "HKCR\*\shell\RightClickToMp3\command" /ve /d "cmd.exe /K %installPath%lame.exe \"%%1\" \"%%1\" --preset insane" /f
+reg add "HKCR\*\shell\RightClickToMp3\command" /ve /d "cmd.exe /K %installPath%lame.exe \"%%1\" \"%%1\".mp3 --preset insane" /f
 ::reg add "HKCR\.wav\shell\RightClickToMp3\command" /ve /d "cmd.exe /K %installPath%lame.exe \"%%1\" \"%%1\".wav --preset insane" /f
 
 ::add reg key for icon
